@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐思体育 – 智能运动服务平台</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #1e293b;
+            background: #f9fafc;
+        }
+        .hero {
+            background: linear-gradient(145deg, #0b1120 0%, #1a2639 100%);
+            color: #f1f5f9;
+            padding: 4.5rem 2rem 5.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -30%; right: -15%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 75%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 span {
+            color: #38bdf8;
+        }
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 1.8rem;
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #7dd3fc;
+            padding: 0.25rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border-left: 5px solid #2563eb;
+            padding-left: 1.2rem;
+            color: #0f172a;
+        }
+        .section-title small {
+            font-weight: 400;
+            font-size: 1rem;
+            color: #475569;
+            margin-left: 0.75rem;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s ease;
+            border: 1px solid #eef2f6;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.07);
+            border-color: #d0e0f0;
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card h3 .icon { font-size: 1.5rem; }
+        .card p {
+            color: #334155;
+            font-size: 0.95rem;
+        }
+        .highlight-section {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+        }
+        .highlight-section p {
+            max-width: 800px;
+            margin-bottom: 1.2rem;
+            color: #1e293b;
+        }
+        .highlight-section a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #b1caf5;
+            transition: border-color 0.2s;
+        }
+        .highlight-section a:hover {
+            border-bottom: 1px solid #2563eb;
+        }
+        .faq-preview {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        .faq-preview li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9edf2;
+        }
+        .faq-preview li:last-child { border-bottom: none; }
+        .faq-preview strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #0f172a;
+            font-weight: 600;
+        }
+        .faq-preview small {
+            color: #475569;
+            font-size: 0.92rem;
+        }
+        .footer-links {
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #dce3ec;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+        }
+        .footer-links a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+        .footer-links a:hover { color: #1d4ed8; text-decoration: underline; }
+        .footer-links .site-credit {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 680px) {
+            .hero h1 { font-size: 2.1rem; }
+            .hero { padding: 3rem 1.2rem 4rem; }
+            .section-title { font-size: 1.5rem; }
+            .card-grid { gap: 1.2rem; }
+            .highlight-section { padding: 1.8rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="badge">⏳ 持续运营 · 运动科技</div>
+    <h1><span>乐思</span>体育</h1>
+    <p>面向运动行业的轻量化数据与服务平台<br>为组织者、教练与参与者提供透明、可信的数字化支撑。</p>
+</section>
+
+<div class="container">
+
+    <!-- 优势区：卡片 -->
+    <h2 class="section-title">核心优势 <small>效率 · 透明 · 持续</small></h2>
+    <div class="card-grid">
+        <div class="card">
+            <h3><span class="icon">📋</span> 场次管理</h3>
+            <p>支持赛事、训练、活动的创建与编排，实时同步参与状态，降低沟通成本。</p>
+        </div>
+        <div class="card">
+            <h3><span class="icon">📊</span> 数据追溯</h3>
+            <p>关键操作留痕，进度可查；适合俱乐部、校队及社区运动组织使用。</p>
+        </div>
+        <div class="card">
+            <h3><span class="icon">🔗</span> 轻量接入</h3>
+            <p>无需复杂部署，通过标准浏览器即可使用，移动端与桌面端体验一致。</p>
+        </div>
+        <div class="card">
+            <h3><span class="icon">🛡️</span> 信息保护</h3>
+            <p>采用基础加密与权限分离设计，尊重用户数据隐私与使用自主权。</p>
+        </div>
+    </div>
+
+    <!-- 说明区 + 嵌入链接 -->
+    <div class="highlight-section">
+        <h2 style="font-size:1.5rem; margin-bottom:1rem; color:#0f172a;">关于乐思体育</h2>
+        <p>
+            <a href="https://official-lesisports.com">乐思体育</a> 是一个面向运动场景的辅助工具站点，
+            提供场次编排、成员登记、简易统计等功能，帮助小型体育组织减少纸质记录与反复确认。
+            平台设计注重实用性与基础可靠性，适合业余联赛、企业运动社团、青少年训练营等轻管理场景。
+        </p>
+        <p>
+            目前服务以线上工具为主，不涉及支付、直播或高并发赛事转播等复杂业务。
+            所有功能均围绕「让运动组织更省力」这一原则迭代，无冗余营销模块。
+        </p>
+        <p style="margin-top:1.2rem;">
+            <span style="background:#eff6ff; padding:0.2rem 1rem; border-radius:30px; font-size:0.85rem; color:#1e40af;">📌 当前版本以信息管理为核心，持续优化基础体验</span>
+        </p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <h2 class="section-title" style="margin-top:3rem;">常见问题 <small>简短说明</small></h2>
+    <ul class="faq-preview">
+        <li>
+            <strong>乐思体育是免费的吗？</strong>
+            <small>是的，目前基础功能对个人及非营利组织免费开放，无隐藏收费项。</small>
+        </li>
+        <li>
+            <strong>是否需要注册才能使用？</strong>
+            <small>浏览公开信息无需注册；创建或管理场次需要简单注册，仅用于身份识别。</small>
+        </li>
+        <li>
+            <strong>数据会保留多久？</strong>
+            <small>在用户主动删除或账号停用前，活动数据持续保留；具体条款可参考站内说明。</small>
+        </li>
+        <li>
+            <strong>如何与乐思体育取得联系？</strong>
+            <small>可通过站点提供的联系表单或邮箱沟通，通常在两个工作日内回复。</small>
+        </li>
+    </ul>
+
+    <!-- 底部链接 -->
+    <div class="footer-links">
+        <div>
+            <a href="https://official-lesisports.com">乐思体育</a>
+            <span style="margin:0 0.5rem; color:#94a3b8;">·</span>
+            <a href="#">服务说明</a>
+            <span style="margin:0 0.5rem; color:#94a3b8;">·</span>
+            <a href="#">隐私摘要</a>
+        </div>
+        <div class="site-credit">
+            © 2025 乐思体育 · 信息仅供参考
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
